@@ -1,6 +1,8 @@
 # Caminho do OH MY ZSH
 export ZSH="$HOME/.oh-my-zsh"
 eval "$(zoxide init zsh)"
+
+# listar arquivos no terminal de forma dinamica e ao estilo RADICAL
 function yy() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
@@ -47,6 +49,7 @@ alias v="vim ~/.vimrc"
 alias mt="vim ~/Documentos/MEUTUTOR/AGENTE_HIBRIDO_BACKEND"
 alias tx="vim ~/.tmux.conf.local"
 alias t="tmux"
+alias ls="yazi"
 
 : '============================================================================================== 👁️⃤  
  ┌─────────────────────────────────────────────────────────────────────────────────┐
