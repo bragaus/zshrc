@@ -2,18 +2,16 @@
 export ZSH="$HOME/.oh-my-zsh"
 eval "$(zoxide init zsh)"
 
-# listar arquivos no terminal de forma dinamica e ao estilo RADICAL
-function yy() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ]; then
-    cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
 }
 
 ZSH_THEME=adben
-#ZSH_THEME_RANDOM_QUIEt=true
+#ZSH_THEME_RANDOM_QUIEt=true (es legazin)
 ZSH_THEME_RANDOM_CANDIDATES=("3den" "Soliah" "adben" "af-magic" "afowler" "agnoster" "alanpeabody" "amuse" "apple" "arrow" "aussiegeek" "avit" "awesomepanda" "bira" "blinks" "bureau" "candy-kingdom" "candy" "clean" "cloud" "crcandy" "crunch" "cypher" "dallas" "darkblood" "daveverwer" "dieter" "dogenpunk" "dpoggi" "dst" "dstufft" "duellj" "eastwood" "edvardm" "emotty" "essembeh" "evan" "fino-time" "fino" "fishy" "flazz" "fletcherm" "fox" "frisk" "frontcube" "funky" "fwalch" "gallifrey" "gallois" "garyblessington" "gentoo" "geoffgarside" "gianu" "gnzh" "gozilla" "half-life" "humza" "imajes" "intheloop" "itchy" "jaischeema" "jbergantine" "jispwoso" "jnrowe" "jonathan" "josh" "jreese" "jtriley" "juanghurtado" "junkfood" "kafeitu" "kardan" "kennethreitz" "kiwi" "kolo" "kphoen" "lambda" "linuxonly" "lukerandall" "macovsky-ruby" "macovsky" "maran" "mgutz" "mh" "michelebologna" "mikeh" "miloshadzic" "minimal" "mira" "mlh" "mortalscumbag" "mrtazz" "murilasso" "muse" "nanotech" "nebirhos" "nicoulaj" "norm" "obraun" "oldgallois" "peepcode" "philips" "pmcgee" "pygmalion-virtualenv" "pygmalion" "random" "re5et" "refined" "rgm" "risto" "rixius" "rkj-repos" "rkj" "robbyrussell" "sammy" "simonoff" "simple" "skaro" "smt" "sonicradish" "sorin" "sporty_256" "steeef" "strug" "sunaku" "sunrise" "superjarin" "suvash" "takashiyoshida" "terminalparty" "theunraveler" "tjkirch" "tjkirch_mod" "tonotdo" "trapd00r" "wedisagree" "wezm+" "wezm" "wuffers" "xiong-chiamiov-plus" "xiong-chiamiov" "ys" "zhann")
 CASE_SENSITIVE="true"
 
@@ -36,24 +34,10 @@ source $ZSH/oh-my-zsh.sh
    export EDITOR='vim'
 fi
 
-alias s="ssh -v root@65.21.51.203"
-alias pa="cd ~/Documentos/Plano-Artistico/planoWeb3"
-alias z="vim ~/.zshrc"
-alias a="cd ~/Documentos/ASSINEAI"
-alias us="setxkbmap us"
-alias br="setxkbmap br"
-alias z="vim ~/.zshrc"
-alias ay="vim ~/.alacritty.toml"
-alias aw="cd ~/.config/awesome && vim ~/.config/awesome"
-alias v="vim ~/.vimrc"
-alias mt="vim ~/Documentos/MEUTUTOR/AGENTE_HIBRIDO_BACKEND"
-alias tx="vim ~/.tmux.conf.local"
-alias t="tmux"
-alias ls="yazi"
 
-: '============================================================================== 👁️⃤  
+: '============================================================================================== 👁️⃤  
  ┌─────────────────────────────────────────────────────────────────────────────────┐
-│ (う-´)▄︻デ═══一* RADICAL TMUX by (BRAGA USS) % se isso se move compile isso!!!    │
+│ (う-´)▄︻デ═══一* RADICAL TMUX by (BRAGA USS) % se isso se move compile isso!!!   │
 │  _.~"~._.~"~._.~"~._.~"~.__.~"~._.~"~._.~"~._.~"~.__.~"~._.~"~._..~"~._.~"~.~"~   │
  └─────────────────────────────────────────────────────────────────────────────────┘
 
@@ -61,13 +45,13 @@ alias ls="yazi"
 ▓▓⚡D O C U M E N T A Ç Ã O   T É C N I C A   D O   M Ó D U L O   t m u x  ⚡▓▓
 ║ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ║
 ║                                                                             ║ 
-║  ⎧ Versão: 0.1 – GAMEFICAÇÃO DE HACKING PARA HACKEAR COM ESTILO             ║
+║  ⎧ Versão: 0.1 – GAMEFICAÇÃO DE PENTEST PARA HACKEAR COM ESTILO             ║
 ║                          SEUS COODA FOFO DO CARALHO                         ║
 ═══════════════════════════════════════════════════════════════════════════════
 ║  >_ STATUS DO DESENVOLVIMENTO: [▓                             ] 0.1%        ║ 
 ═══════════════════════════════════════════════════════════════════════════════
 ║                                                                             ║ 
-║  🂾 CONVOCO TODOS OS BRUXOS DIGITAIS A CONTRIBUIR COM O RADICAL O.S STYLE 🂱  ║
+║  🂾 CONVOCO TODOS OS BRUXOS DIGITAIS A CONTRIBUIR COM O RADICAL WM STYLE 🂱   ║
 ║                                                                             ║
 ║    ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆ ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆ ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆ ⋆˖⁺‧₊☽◯☾₊‧⁺˖꧁✮..🔮☽..✮꧂        ║
 ║     “código livre, mentes livres – derrube os muros do proprietário”        ║
@@ -108,7 +92,6 @@ alias ls="yazi"
 =================================================================================================='
 
 tmux() {
-  # ── CORES NEON CYBERPUNK ─────────────────────────────────────────
   local R=$'\e[0m'
   local RED=$'\e[38;5;196m'    # vermelho sangue
   local GRN=$'\e[38;5;46m'     # verde matrix
@@ -121,7 +104,7 @@ tmux() {
   local BLK=$'\e[30m'          # preto (para contraste)
   local ORAN=$'\e[38;5;208m'   # Laranja neon
 
-  # ── CABEÇALHO SIMPLES ────────────────────────────────────────────
+  # ── HEADER ────────────────────────────────────────────
   _header() {
     echo "${BLD}${ORAN}┌──────────────────────────────────────────────────────────────┐${R}"
     echo "${BLD}${ORAN}│ (う-´)▄︻デ═══一* BRAGA USS TERMINAL | if it moves compile it!${R}"
@@ -129,7 +112,7 @@ tmux() {
     echo ""
   }
 
-  # ── ARTE ASCII GRANDE (ROXA/ROSA) ─────────────────────────────────
+  # ── LUCY ꨄ♡ ─────────────────────────────────────────────────────────
   _art() {
     echo "${MGT}⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀${R}"
     echo "${MGT}⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀${R}"
@@ -355,6 +338,28 @@ if [[ -z "$TMUX" && -z "$NO_TMUX" && -n "$PS1" ]]; then
   tmux
 fi
 
+
+alias s="ssh -v root@65.21.51.203"
+alias pa="cd ~/Documentos/Plano-Artistico/planoWeb3"
+alias z="vim ~/.zshrc"
+alias a="cd ~/Documentos/ASSINEAI"
+alias us="setxkbmap us"
+alias br="setxkbmap br"
+alias z="vim ~/.zshrc"
+alias ay="vim ~/.alacritty.toml"
+alias aw="cd ~/.config/awesome && vim ~/.config/awesome"
+alias v="vim ~/.vimrc"
+alias mt="vim ~/Documentos/MEUTUTOR/AGENTE_HIBRIDO_BACKEND"
+alias tx="vim ~/.tmux.conf.local"
+alias t="tmux"
+alias ls="yazi"
+alias yz="cd ~/.config/yazi && vim ."
+alias h="n-history"
+alias oz="cd ~/.config/yazi && opencode"
+alias D="cd ~/Downloads"
+alias B="pavucontrol"
+alias vb="sudo modprobe -r kvm_amd"
+
 cat << "EOF"
 
          Seja bem vindo cowboy do cyber espaço
@@ -369,3 +374,6 @@ ___.
 
 
 EOF
+
+# opencode
+export PATH=/home/bragaus/.opencode/bin:$PATH
